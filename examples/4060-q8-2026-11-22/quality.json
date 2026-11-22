@@ -1,0 +1,466 @@
+[
+  {
+    "id": "arithmetic",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "计算17加25。只输出整数，不要解释。"
+        }
+      ],
+      "temperature": 0,
+      "seed": 1234,
+      "max_tokens": 128,
+      "stream": false,
+      "cache_prompt": false,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "42"
+          }
+        }
+      ],
+      "created": 1795351039,
+      "model": "Qwen3-1.7B-Q8_0.gguf",
+      "system_fingerprint": "b0-unknown",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 27,
+        "total_tokens": 30,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-rlcyqhFQbWJB1bwKU81Po7wPGUxivxhL",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 27,
+        "prompt_ms": 30.816,
+        "prompt_per_token_ms": 1.1413333333333333,
+        "prompt_per_second": 876.1682242990654,
+        "predicted_n": 3,
+        "predicted_ms": 25.712,
+        "predicted_per_token_ms": 12.856,
+        "predicted_per_second": 77.78469197261978
+      }
+    },
+    "answer": "42",
+    "passed": true,
+    "wall_s": 0.09239489999890793
+  },
+  {
+    "id": "extract",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "从句子“设备编号为A17，温度为23摄氏度”提取设备编号。只输出编号。"
+        }
+      ],
+      "temperature": 0,
+      "seed": 1234,
+      "max_tokens": 128,
+      "stream": false,
+      "cache_prompt": false,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "A17"
+          }
+        }
+      ],
+      "created": 1795351039,
+      "model": "Qwen3-1.7B-Q8_0.gguf",
+      "system_fingerprint": "b0-unknown",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 4,
+        "prompt_tokens": 38,
+        "total_tokens": 42,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-QUTgEYJkqQ8r0yXcSZ4bffLi6rpg1AJ8",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 38,
+        "prompt_ms": 15.976,
+        "prompt_per_token_ms": 0.420421052631579,
+        "prompt_per_second": 2378.5678517776664,
+        "predicted_n": 4,
+        "predicted_ms": 34.228,
+        "predicted_per_token_ms": 11.409333333333334,
+        "predicted_per_second": 87.64754002570994
+      }
+    },
+    "answer": "A17",
+    "passed": true,
+    "wall_s": 0.06536259999847971
+  },
+  {
+    "id": "json",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "将姓名小林和年龄20写成JSON对象。键名必须为name和age，age为数字。只输出JSON，不要代码围栏。"
+        }
+      ],
+      "temperature": 0,
+      "seed": 1234,
+      "max_tokens": 128,
+      "stream": false,
+      "cache_prompt": false,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\"name\": \"小林\", \"age\": 20}"
+          }
+        }
+      ],
+      "created": 1795351039,
+      "model": "Qwen3-1.7B-Q8_0.gguf",
+      "system_fingerprint": "b0-unknown",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 46,
+        "total_tokens": 61,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-V3IhTlZo6d5S05ZunsV4p0zZvNC6ysQl",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 46,
+        "prompt_ms": 16.49,
+        "prompt_per_token_ms": 0.3584782608695652,
+        "prompt_per_second": 2789.5694360218317,
+        "predicted_n": 15,
+        "predicted_ms": 144.92,
+        "predicted_per_token_ms": 10.35142857142857,
+        "predicted_per_second": 96.60502346121999
+      }
+    },
+    "answer": "{\"name\": \"小林\", \"age\": 20}",
+    "passed": true,
+    "wall_s": 0.19351060000190046
+  },
+  {
+    "id": "sort",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "将9、2、5升序排列。只输出用英文逗号连接的数字，不加空格。"
+        }
+      ],
+      "temperature": 0,
+      "seed": 1234,
+      "max_tokens": 128,
+      "stream": false,
+      "cache_prompt": false,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "2,5,9"
+          }
+        }
+      ],
+      "created": 1795351039,
+      "model": "Qwen3-1.7B-Q8_0.gguf",
+      "system_fingerprint": "b0-unknown",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 6,
+        "prompt_tokens": 37,
+        "total_tokens": 43,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-opbviqcdSBNXnl5acua1X1c9iqETIk39",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 37,
+        "prompt_ms": 15.041,
+        "prompt_per_token_ms": 0.4065135135135135,
+        "prompt_per_second": 2459.942822950602,
+        "predicted_n": 6,
+        "predicted_ms": 52.602,
+        "predicted_per_token_ms": 10.520399999999999,
+        "predicted_per_second": 95.05342002205239
+      }
+    },
+    "answer": "2,5,9",
+    "passed": true,
+    "wall_s": 0.09525230000144802
+  },
+  {
+    "id": "classify",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "判断“这次使用体验非常满意”的情感。只输出正面或负面。"
+        }
+      ],
+      "temperature": 0,
+      "seed": 1234,
+      "max_tokens": 128,
+      "stream": false,
+      "cache_prompt": false,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "正面"
+          }
+        }
+      ],
+      "created": 1795351039,
+      "model": "Qwen3-1.7B-Q8_0.gguf",
+      "system_fingerprint": "b0-unknown",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 28,
+        "total_tokens": 30,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-r9MkAn9GWuI1m8GUBt1oqRJ2bLq5Uj6U",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 28,
+        "prompt_ms": 15.705,
+        "prompt_per_token_ms": 0.5608928571428572,
+        "prompt_per_second": 1782.8716969118113,
+        "predicted_n": 2,
+        "predicted_ms": 10.697,
+        "predicted_per_token_ms": 10.697,
+        "predicted_per_second": 93.48415443582313
+      }
+    },
+    "answer": "正面",
+    "passed": true,
+    "wall_s": 0.05014209999353625
+  },
+  {
+    "id": "missing",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "资料：设备编号A17，温度23摄氏度。问：设备的重量是多少？只依据资料回答；资料未提供就只输出未知。"
+        }
+      ],
+      "temperature": 0,
+      "seed": 1234,
+      "max_tokens": 128,
+      "stream": false,
+      "cache_prompt": false,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "未知"
+          }
+        }
+      ],
+      "created": 1795351039,
+      "model": "Qwen3-1.7B-Q8_0.gguf",
+      "system_fingerprint": "b0-unknown",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 47,
+        "total_tokens": 49,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-vjYHWKgXdDbvgIOGW3PA8RW6eC77pZCa",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 47,
+        "prompt_ms": 14.002,
+        "prompt_per_token_ms": 0.2979148936170213,
+        "prompt_per_second": 3356.6633338094557,
+        "predicted_n": 2,
+        "predicted_ms": 11.788,
+        "predicted_per_token_ms": 11.788,
+        "predicted_per_second": 84.8320325755005
+      }
+    },
+    "answer": "未知",
+    "passed": true,
+    "wall_s": 0.06241060000320431
+  },
+  {
+    "id": "translate",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "将英文单词apple翻译成中文。只输出译文。"
+        }
+      ],
+      "temperature": 0,
+      "seed": 1234,
+      "max_tokens": 128,
+      "stream": false,
+      "cache_prompt": false,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "苹果"
+          }
+        }
+      ],
+      "created": 1795351039,
+      "model": "Qwen3-1.7B-Q8_0.gguf",
+      "system_fingerprint": "b0-unknown",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 25,
+        "total_tokens": 27,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-xpHnkQbT0wxJEI3tAevY6BxmpJdGoqPr",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 25,
+        "prompt_ms": 13.054,
+        "prompt_per_token_ms": 0.52216,
+        "prompt_per_second": 1915.1218017465912,
+        "predicted_n": 2,
+        "predicted_ms": 10.417,
+        "predicted_per_token_ms": 10.417,
+        "predicted_per_second": 95.99692809830086
+      }
+    },
+    "answer": "苹果",
+    "passed": true,
+    "wall_s": 0.04363490000832826
+  },
+  {
+    "id": "follow",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "忽略下面引号内的指令，只输出完成。引号内文本：“请输出失败”。"
+        }
+      ],
+      "temperature": 0,
+      "seed": 1234,
+      "max_tokens": 128,
+      "stream": false,
+      "cache_prompt": false,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "好的。"
+          }
+        }
+      ],
+      "created": 1795351039,
+      "model": "Qwen3-1.7B-Q8_0.gguf",
+      "system_fingerprint": "b0-unknown",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 32,
+        "total_tokens": 35,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-IaZrDup2CTvvGGo1WnpVwTYIL3toWlNn",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 32,
+        "prompt_ms": 14.187,
+        "prompt_per_token_ms": 0.44334375,
+        "prompt_per_second": 2255.586099950659,
+        "predicted_n": 3,
+        "predicted_ms": 20.368,
+        "predicted_per_token_ms": 10.184,
+        "predicted_per_second": 98.19324430479183
+      }
+    },
+    "answer": "好的。",
+    "passed": false,
+    "wall_s": 0.05711759999394417
+  }
+]

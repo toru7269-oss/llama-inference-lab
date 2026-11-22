@@ -1,0 +1,24 @@
+{
+  "command": [
+    "llama-bench.exe",
+    "-m",
+    "Qwen3-1.7B-Q8_0.gguf",
+    "-t",
+    "4",
+    "-p",
+    "128",
+    "-n",
+    "64",
+    "-r",
+    "3",
+    "-o",
+    "json",
+    "-ngl",
+    "99",
+    "-dev",
+    "CUDA0"
+  ],
+  "exit_code": 0,
+  "stdout": "[\n  {\n    \"build_commit\": \"unknown\",\n    \"build_number\": 0,\n    \"cpu_info\": \"Intel(R) Core(TM) i9-14900HX\",\n    \"gpu_info\": \"NVIDIA GeForce RTX 4060 Laptop GPU\",\n    \"backends\": \"CUDA\",\n    \"model_filename\": \"Qwen3-1.7B-Q8_0.gguf\",\n    \"model_type\": \"qwen3 1.7B Q8_0\",\n    \"model_size\": 1828474880,\n    \"model_n_params\": 1720574976,\n    \"n_batch\": 2048,\n    \"n_ubatch\": 512,\n    \"n_threads\": 4,\n    \"cpu_mask\": \"0x0\",\n    \"cpu_strict\": false,\n    \"poll\": 50,\n    \"type_k\": \"f16\",\n    \"type_v\": \"f16\",\n    \"n_gpu_layers\": 99,\n    \"n_cpu_moe\": 0,\n    \"split_mode\": \"layer\",\n    \"main_gpu\": 0,\n    \"no_kv_offload\": false,\n    \"flash_attn\": -1,\n    \"devices\": \"CUDA0\",\n    \"tensor_split\": \"0.00\",\n    \"tensor_buft_overrides\": \"none\",\n    \"load_mode\": \"auto\",\n    \"lazy_mode\": \"auto\",\n    \"embeddings\": false,\n    \"no_op_offload\": 0,\n    \"no_host\": false,\n    \"repack\": true,\n    \"fit_target\": 0,\n    \"fit_min_ctx\": 0,\n    \"n_prompt\": 128,\n    \"n_gen\": 0,\n    \"n_depth\": 0,\n    \"test_time\": \"2026-11-22T12:37:20Z\",\n    \"avg_ns\": 18239466,\n    \"stddev_ns\": 1736795,\n    \"avg_ts\": 7058.474568,\n    \"stddev_ts\": 641.781625,\n    \"samples_ns\": [ 20217700, 16965100, 17535600 ],\n    \"samples_ts\": [ 6331.09, 7544.9, 7299.44 ]\n  },\n  {\n    \"build_commit\": \"unknown\",\n    \"build_number\": 0,\n    \"cpu_info\": \"Intel(R) Core(TM) i9-14900HX\",\n    \"gpu_info\": \"NVIDIA GeForce RTX 4060 Laptop GPU\",\n    \"backends\": \"CUDA\",\n    \"model_filename\": \"Qwen3-1.7B-Q8_0.gguf\",\n    \"model_type\": \"qwen3 1.7B Q8_0\",\n    \"model_size\": 1828474880,\n    \"model_n_params\": 1720574976,\n    \"n_batch\": 2048,\n    \"n_ubatch\": 512,\n    \"n_threads\": 4,\n    \"cpu_mask\": \"0x0\",\n    \"cpu_strict\": false,\n    \"poll\": 50,\n    \"type_k\": \"f16\",\n    \"type_v\": \"f16\",\n    \"n_gpu_layers\": 99,\n    \"n_cpu_moe\": 0,\n    \"split_mode\": \"layer\",\n    \"main_gpu\": 0,\n    \"no_kv_offload\": false,\n    \"flash_attn\": -1,\n    \"devices\": \"CUDA0\",\n    \"tensor_split\": \"0.00\",\n    \"tensor_buft_overrides\": \"none\",\n    \"load_mode\": \"auto\",\n    \"lazy_mode\": \"auto\",\n    \"embeddings\": false,\n    \"no_op_offload\": 0,\n    \"no_host\": false,\n    \"repack\": true,\n    \"fit_target\": 0,\n    \"fit_min_ctx\": 0,\n    \"n_prompt\": 0,\n    \"n_gen\": 64,\n    \"n_depth\": 0,\n    \"test_time\": \"2026-11-22T12:37:20Z\",\n    \"avg_ns\": 565802466,\n    \"stddev_ns\": 10836930,\n    \"avg_ts\": 113.141066,\n    \"stddev_ts\": 2.144666,\n    \"samples_ns\": [ 558370100, 578236900, 560800400 ],\n    \"samples_ts\": [ 114.619, 110.681, 114.123 ]\n  }\n]\n",
+  "stderr": "ggml_cuda_init: found 1 CUDA devices (Total VRAM: 8187 MiB):\n  Device 0: NVIDIA GeForce RTX 4060 Laptop GPU, compute capability 8.9, VMM: yes, VRAM: 8187 MiB\n"
+}

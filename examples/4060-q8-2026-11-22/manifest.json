@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-11-22T12:37:16.230847+00:00",
+  "status": "completed",
+  "model": {
+    "name": "Qwen3-1.7B-Q8_0.gguf",
+    "bytes": 1834426016,
+    "sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a"
+  },
+  "binaries": {
+    "llama-bench.exe": "b7b5cd2bf04e23159cbf84a01f1728c6f531be7223b740d2de016030b1378311",
+    "llama-server.exe": "687cee9df6dde4ced0a74974c63bb4b56c7087e4f237ab5bb34dc4157e576f7f"
+  },
+  "code_sha256": "09f640db891015a3aa52010391f65d58f5b64f82d093a8051cb1f5206ece7ca4",
+  "cases_sha256": "7b4ba8ef71d941d483c6906dac0ca3ca0f85cc36b3b29251765fdddffb85678f",
+  "python": "3.14.6",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "config": {
+    "devices": [
+      "gpu",
+      "cpu"
+    ],
+    "threads": 4,
+    "prompt": 128,
+    "generate": 64,
+    "repetitions": 3,
+    "timeout": 900
+  }
+}
