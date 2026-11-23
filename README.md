@@ -64,6 +64,17 @@ python -m unittest discover -s tests -v
 
 使用相同模型哈希和相同测试参数比较 CPU/GPU。CPU使用`-dev none -ngl 0 -nkvo 1`，GPU使用`-dev CUDA0 -ngl 99`。这同时改变执行设备与内存放置，不能解释成单个算子的加速。
 
+新生成的`quality.json`另外保存题目的`expected`（期望值）、`rule`（规则）和`failure_reason`（失败原因）。报告的“失败明细”列出期望回答、实际回答和原因，旧记录缺少的字段显示“未记录（旧格式）”。
+
+| failure_reason | 含义 |
+|---|---|
+| `null` | 当前任务检查通过 |
+| `unexpected_finish_reason` | 结束原因不是`stop`，例如触及长度上限；不能仅凭文字看似正确就判通过 |
+| `exact_mismatch` | 回答去掉首尾空白后，不等于指定文本 |
+| `answer_mismatch` | 其他规则未通过，例如JSON结构或值不符 |
+
+这些标签描述可检查的失败现象，不自动归因于量化，也不表示模型质量已经改善。
+
 ## 指标解释
 
 - **pp**：prompt processing，输入处理；**tg**：token generation，逐token生成。
