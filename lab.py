@@ -2,6 +2,7 @@
 import argparse
 from datetime import datetime, timezone
 import hashlib
+import html
 import json
 import os
 from pathlib import Path
@@ -58,6 +59,21 @@ def check_answer(case, text):
     raise ValueError(f"unsupported rule: {rule}")
 
 
+def diagnose_answer(case, text, finish_reason):
+    """Return a grading outcome and a machine-readable failure reason."""
+    if finish_reason != "stop":
+        return {"passed": False, "failure_reason": "unexpected_finish_reason"}
+
+    if case["rule"] == "exact":
+        if text.strip() == case["expected"]:
+            return {"passed": True, "failure_reason": None}
+        else:
+            return {"passed": False, "failure_reason": "exact_mismatch"}
+
+    passed = check_answer(case, text)
+    return {"passed": passed, "failure_reason": None if passed else "answer_mismatch"}
+
+
 def request_json(url, payload=None, timeout=120):
     data = None if payload is None else json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
@@ -109,9 +125,12 @@ def evaluate(server, model, cases, out, threads):
                 wall = time.perf_counter() - start
                 choice = response["choices"][0]
                 answer = choice["message"].get("content") or ""
-                passed = choice["finish_reason"] == "stop" and check_answer(case, answer)
+                diagnosis = diagnose_answer(case, answer, choice["finish_reason"])
+                passed = diagnosis["passed"]
                 rows.append({"id": case["id"], "request": payload, "response": response,
-                             "answer": answer, "passed": passed, "wall_s": wall})
+                             "answer": answer, "expected": case["expected"], "rule": case["rule"],
+                             "passed": passed, "failure_reason": diagnosis["failure_reason"],
+                             "wall_s": wall})
                 save(out / "quality.json", rows)
                 print(f"quality {case['id']}: {'PASS' if passed else 'FAIL'}", flush=True)
         finally:
@@ -149,6 +168,12 @@ def benchmark(bench, model, device, args, out):
     return rows
 
 
+def report_cell(value):
+    """Keep recorded answers from becoming Markdown table or HTML markup."""
+    text = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+    return html.escape(text).replace("|", "&#124;").replace("\r\n", "\n").replace("\r", "\n").replace("\n", "<br>")
+
+
 def report(out, manifest, benches, quality):
     lines = ["# 实验报告", "", f"- 时间（UTC）：{manifest['created_utc']}",
              f"- 模型：{manifest['model']['name']}", f"- SHA256：`{manifest['model']['sha256']}`",
@@ -170,6 +195,18 @@ def report(out, manifest, benches, quality):
     if quality:
         lines += ["", f"完整响应耗时中位数：{statistics.median(r['wall_s'] for r in quality):.3f} 秒。",
                   "不同题目的输入输出长度不同，此处仅作运行观察，不能用于公平的模型速度比较。"]
+    failures = [row for row in quality if not row["passed"]]
+    lines += ["", "## 失败明细", ""]
+    if failures:
+        lines += ["失败类型描述可直接检查的现象，不用于归因量化或模型内部机制。",
+                  "旧记录没有保存的字段显示为未记录，不根据当前题集猜测历史期望值。", "",
+                  "| 题号 | 期望回答 | 实际回答 | 失败原因 |", "|---|---|---|---|"]
+        for row in failures:
+            cells = (row["id"], row.get("expected", "未记录（旧格式）"), row["answer"],
+                     row.get("failure_reason") or "未记录（旧格式）")
+            lines.append("| " + " | ".join(report_cell(cell) for cell in cells) + " |")
+    else:
+        lines.append("本次已记录任务中没有失败项；不代表所有可能任务都正确。")
     lines += ["", "## 条件与局限", "", "- 单机、串行请求；质量评测禁用提示词缓存，关闭思考模式。",
               "- 同一个模型的 CPU/GPU 对比保持模型哈希和基准参数一致；CPU 为指定线程数，未调优。",
               "- 尚未控制电源、温度、GPU 频率和后台负载；不将结果推广为硬件极限。",
